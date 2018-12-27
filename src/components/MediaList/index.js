@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Media from '../Media'
 import {components, validate} from '../../utils'
 import {array} from 'prop-types'
+import './style.css'
 
 const applyValidation = validate({
   items: array.isRequired,

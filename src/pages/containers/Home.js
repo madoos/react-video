@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {renameProps, adaptProps} from '../../utils'
 import {map} from 'ramda'
-import HomeLayout from '../components/HomeLayout'
-import Categories from '../components/categories'
+import Layout from '../components/Layout'
+import Categories from '../components/Categories'
+import Brand from '../components/Brand'
 
 class Home extends Component {
   constructor(props) {
@@ -14,9 +15,10 @@ class Home extends Component {
     const categoryItems = map(renameProps({playlist: 'items'}), categories)
     return (
       <div>
-        <HomeLayout>
+        <Layout>
+          <Brand />
           <Categories items={categoryItems} />
-        </HomeLayout>
+        </Layout>
       </div>
     )
   }

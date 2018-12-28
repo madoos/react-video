@@ -1,7 +1,18 @@
 .media-list-component {
-  border: solid 1px gray;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 1000px;
 }
 
-.media-list-component .items > * {
-  float: left;
+.media-list-component .media-list-items > * {
+  display: inline-block;
+}
+
+.media-list-component .media-list-title {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  letter-spacing: 2px;
+  font-weight: bold;
 }

@@ -12,8 +12,8 @@ const applyValidation = validate({
 const MediaList = ({items, title}) => {
   return (
     <div className="media-list-component">
-      <h2>{title}</h2>
-      <div className="items">{components(Media, items)}</div>
+      <h2 className="media-list-title">{title}</h2>
+      <div className="media-list-items">{components(Media, items)}</div>
     </div>
   )
 }

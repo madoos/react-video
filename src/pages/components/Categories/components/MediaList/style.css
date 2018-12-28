@@ -1,0 +1,7 @@
+.media-list-component {
+  border: solid 1px gray;
+}
+
+.media-list-component .items > * {
+  float: left;
+}

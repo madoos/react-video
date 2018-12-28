@@ -1,20 +1,12 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import Home from './pages/containers/Home'
 
-// components
-import MediaList from './components/MediaList'
+const App = ({data}) => {
+  return (
+    <div className="app-component">
+      <Home data={data} />
+    </div>
+  )
+}
 
-// utils
-const {render} = ReactDOM
-import data from './api.json'
-const playlist = data.categories[0].playlist
-
-const app = (
-  <div>
-    <MediaList items={playlist} />
-  </div>
-)
-
-const appContainer = document.getElementById('app')
-
-render(app, appContainer)
+export default App

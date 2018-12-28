@@ -1,5 +1,5 @@
 import React from 'react'
-const {curry, map} = require('ramda')
+import {map, pipe, keys, curry, assoc, reduce} from 'ramda'
 
 // component :: Component -> Object -> dom
 const component = curry((Component, data) => {
@@ -7,15 +7,24 @@ const component = curry((Component, data) => {
 })
 
 // components :: Component -> [Object] -> [dom]
-const components = curry((Component, items) =>
-  items.map((data, key) => component(Component, {key: String(key), ...data}))
-)
+const components = curry((Component, items) => {
+  return items.map((data, key) =>
+    component(Component, {key: String(key), ...data})
+  )
+})
 
 // validate :: Object -> function -> function
 const validate = curry((validation, statelessComponent) => {
-  const validated = (...args) => statelessComponent(...args)
-  validated.propTypes = validation
-  return validated
+  statelessComponent.propTypes = validation
+  return statelessComponent
 })
 
-export {component, components, validate}
+const adaptProps = curry((WrappedComponent, f) => {
+  return props => <WrappedComponent {...f(props)} />
+})
+
+const renameProps = curry((keysMap, obj) =>
+  reduce((acc, key) => assoc(keysMap[key] || key, obj[key], acc), {}, keys(obj))
+)
+
+export {component, components, validate, adaptProps, renameProps}
